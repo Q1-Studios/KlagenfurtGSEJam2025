@@ -1,0 +1,10 @@
+# General (OS-specific)
+[Dd]esktop.ini
+.DS_Store
+
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# Godot Addons (if necessary for the project, make exceptions!)
+addons/*
