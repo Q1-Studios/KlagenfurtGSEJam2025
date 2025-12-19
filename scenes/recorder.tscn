@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://di604njbsw667"]
+
+[ext_resource type="Script" uid="uid://bs2etkk8chlvx" path="res://scripts/recorder.gd" id="1_o5qli"]
+[ext_resource type="AudioStream" uid="uid://cbuu6rjekjsc6" path="res://Kygo & Selena Gomez - It Ain't Me (Codeko Remix).mp3" id="2_0wfyh"]
+
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("music")]
+script = ExtResource("1_o5qli")
+music = NodePath("AudioStreamPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_0wfyh")
