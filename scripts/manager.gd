@@ -52,6 +52,7 @@ func _process(delta: float) -> void:
 			if (currentMusicTime >= currentEnemyTime - 5):
 				match currentEnemyKey:
 					"S":
+						print(Time.get_unix_time_from_system())
 						bar1.spawnEnemy()
 						enemyTracker += 1
 					"D":

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beatmap" load_steps=9 format=3 uid="uid://0w5h01ppjf2y"]
+[gd_resource type="Resource" script_class="Beatmap" load_steps=4 format=3 uid="uid://cqughl5jgodkd"]
 
 [ext_resource type="Script" uid="uid://nbg3jtt8yyoh" path="res://TimeStampKey.gd" id="1_mv8ii"]
 [ext_resource type="Script" uid="uid://dflfigbm8j6fj" path="res://beatmap.gd" id="2_76ctb"]
@@ -8,31 +8,6 @@ script = ExtResource("1_mv8ii")
 milliseconds = 1000
 key = "S"
 
-[sub_resource type="Resource" id="Resource_lnj24"]
-script = ExtResource("1_mv8ii")
-milliseconds = 2000
-key = "D"
-
-[sub_resource type="Resource" id="Resource_dk4rp"]
-script = ExtResource("1_mv8ii")
-milliseconds = 3000
-key = "F"
-
-[sub_resource type="Resource" id="Resource_5c5ma"]
-script = ExtResource("1_mv8ii")
-milliseconds = 4000
-key = "J"
-
-[sub_resource type="Resource" id="Resource_xmo30"]
-script = ExtResource("1_mv8ii")
-milliseconds = 5000
-key = "K"
-
-[sub_resource type="Resource" id="Resource_uslsf"]
-script = ExtResource("1_mv8ii")
-milliseconds = 6000
-key = "L"
-
 [resource]
 script = ExtResource("2_76ctb")
-data = Array[ExtResource("1_mv8ii")]([SubResource("Resource_0xf04"), SubResource("Resource_lnj24"), SubResource("Resource_dk4rp"), SubResource("Resource_5c5ma"), SubResource("Resource_xmo30"), SubResource("Resource_uslsf")])
+data = Array[ExtResource("1_mv8ii")]([SubResource("Resource_0xf04")])

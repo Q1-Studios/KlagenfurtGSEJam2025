@@ -30,6 +30,7 @@ func _input(event: InputEvent) -> void:
 		print(keyName)
 		if hit(perfectBar.enemyList):
 			perfectHit.emit()
+			print(Time.get_unix_time_from_system())
 		elif hit(okInnerBar.enemyList):
 			okInnerHit.emit()
 		elif hit(okOuterBar.enemyList):
@@ -52,6 +53,6 @@ func spawnEnemy():
 	#print("spawn call works")
 	var instance = enemy.instantiate()
 	instance.position.y = -50
-	instance.endPosition = $MissBar.position
-	instance.speed = 0.1
+	instance.endPosition = $PerfectBar.position
+	instance.speed = 0.5
 	add_child(instance)

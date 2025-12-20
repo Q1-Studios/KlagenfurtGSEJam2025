@@ -9,13 +9,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x848m"]
 size = Vector2(60.6, 5)
 
-[node name="Bar" type="Node2D" node_paths=PackedStringArray("okInnerBar", "okOuterBar", "perfectBar", "enemySpawn")]
+[node name="Bar" type="Node2D" node_paths=PackedStringArray("okInnerBar", "okOuterBar", "perfectBar")]
 scale = Vector2(10, 10)
 script = ExtResource("1_5dekh")
 okInnerBar = NodePath("OkInnerBar")
 okOuterBar = NodePath("OkOuterBar")
 perfectBar = NodePath("PerfectBar")
-enemySpawn = NodePath("")
 
 [node name="PerfectBar" type="Area2D" parent="."]
 script = ExtResource("2_bwlfd")

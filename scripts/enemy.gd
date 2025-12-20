@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 	
 	#TODO
 	#scale timing with distance between spawn and end
-	position = lerp(startPosition, endPosition, clampf(progress, 0, 1))
+	position = lerp(startPosition, endPosition, clampf(progress, 0, 2))
 
 	$Wave.offset = position.y/$Wave.period
 	$Wave.updatewave()
