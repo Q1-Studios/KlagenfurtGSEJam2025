@@ -28,12 +28,13 @@ func _input(event: InputEvent) -> void:
 		print(keyName)
 		if hit(perfectBar.enemyList):
 			perfectHit.emit()
+		elif hit(okInnerBar.enemyList):
+			okInnerHit.emit()
+		elif hit(okOuterBar.enemyList):
+			okOuterHit.emit()
 		else:
 			noHit.emit()
-		if hit(okInnerBar.enemyList):
-			okInnerHit.emit()
-		if hit(okOuterBar.enemyList):
-			okOuterHit.emit()
+			
 
 func hit(targetList:Array):
 	var containsEnemy: bool = !targetList.is_empty()
