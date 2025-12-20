@@ -7,8 +7,9 @@ var progress: float = 0.0
 # Called when the node enters the scene tree for the first time.
 
 func _ready() -> void:
-	startPosition = position 
-	print("i spawned")
+	startPosition = position
+	#$Wave.length = -(startPosition-endPosition)[1]
+	#print("i spawned")
 	pass # Replace with function body.
 
 
@@ -21,4 +22,7 @@ func _process(delta: float) -> void:
 	#TODO
 	#scale timing with distance between spawn and end
 	position = lerp(startPosition, endPosition, clampf(progress, 0, 1))
+
+	$Wave.offset = position.y/$Wave.period # TODO position.y :((((
+	$Wave.updatewave()
 	pass

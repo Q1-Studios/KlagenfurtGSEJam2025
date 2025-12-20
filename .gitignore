@@ -8,3 +8,4 @@
 
 # Godot Addons (if necessary for the project, make exceptions!)
 addons/*
+*.tmp
