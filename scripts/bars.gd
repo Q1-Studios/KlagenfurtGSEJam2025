@@ -30,6 +30,7 @@ func _input(event: InputEvent) -> void:
 		print(keyName)
 		if hit(perfectBar.enemyList):
 			perfectHit.emit()
+			print("hit")
 			print(Time.get_unix_time_from_system())
 		elif hit(okInnerBar.enemyList):
 			okInnerHit.emit()

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://braju33b42mc7" path="res://scripts/manager.gd" id="1_bdh1m"]
 [ext_resource type="PackedScene" uid="uid://bjr3b5q84iffp" path="res://scenes/bar.tscn" id="2_bgrh2"]
-[ext_resource type="Resource" uid="uid://cqughl5jgodkd" path="res://assets/beatmaps/test.tres" id="2_gq280"]
+[ext_resource type="Resource" uid="uid://cmrye6janx0y8" path="res://assets/beatmaps/test.tres" id="2_gq280"]
 [ext_resource type="AudioStream" uid="uid://cbuu6rjekjsc6" path="res://Kygo & Selena Gomez - It Ain't Me (Codeko Remix).mp3" id="4_21v6b"]
 
 [node name="Manager" type="Node2D" node_paths=PackedStringArray("bar1", "bar2", "bar3", "bar4", "bar5", "bar6", "music")]

@@ -21,12 +21,17 @@ var currentEnemyTime:int
 var currentElapsedTime:int
 var musicLatency:int
 var currentMusicTime:int
+var globalStartTime:int
+var hasStarted:bool = false
 
 #TODO
 # would be nice if we could add hexagon rotation as a next level gimmick
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
+	globalStartTime = Time.get_unix_time_from_system()
+	
 	bar1.keyName = "Hex1"
 	bar2.keyName = "Hex2"
 	bar3.keyName = "Hex3"
@@ -34,7 +39,7 @@ func _ready() -> void:
 	bar5.keyName = "Hex5"
 	bar6.keyName = "Hex6"
 	musicLatency = AudioServer.get_output_latency()
-	music.play()
+	
 	beatMapLength = beatMap.data.size()
 
 
@@ -43,15 +48,21 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if Time.get_unix_time_from_system() - 3 >= globalStartTime and not hasStarted:
+		music.play()
+		hasStarted = true
+	
 	if enemyTracker < beatMapLength:
 			currentEnemyKey = beatMap.data[enemyTracker].key
 			currentEnemyTime = beatMap.data[enemyTracker].milliseconds 
 			currentElapsedTime = Time.get_ticks_msec()
 			#print(beatMap.data[enemyTracker].key)
 			currentMusicTime = int(1000 * (music.get_playback_position() + AudioServer.get_time_to_next_mix() + musicLatency))
-			if (currentMusicTime >= currentEnemyTime - 5):
+			if (currentMusicTime >= currentEnemyTime - 2000):
+				##erstes hit object darf nicht < 2000ms sein
 				match currentEnemyKey:
 					"S":
+						print("Spawn")
 						print(Time.get_unix_time_from_system())
 						bar1.spawnEnemy()
 						enemyTracker += 1
