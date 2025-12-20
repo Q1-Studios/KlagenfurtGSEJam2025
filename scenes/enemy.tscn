@@ -9,6 +9,7 @@ size = Vector2(16, 16)
 
 [node name="Enemy" type="Area2D" groups=["Enemy"]]
 z_index = 5
+scale = Vector2(0.2, 0.2)
 script = ExtResource("2_8a8l7")
 
 [node name="Wave" type="Line2D" parent="."]
@@ -35,5 +36,5 @@ texture = ExtResource("2_md0e3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(9.536743e-07, 9.536743e-07)
-scale = Vector2(0.36604786, 0.36604786)
+scale = Vector2(0.9999998, 0.9999998)
 shape = SubResource("RectangleShape2D_lne1l")

@@ -7,8 +7,7 @@ var progress: float = 0.0
 # Called when the node enters the scene tree for the first time.
 
 func _ready() -> void:
-	startPosition = position
-	#$Wave.length = -(startPosition-endPosition)[1]
+	startPosition = position 
 	#print("i spawned")
 	pass # Replace with function body.
 
