@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c58wjax2eyvgm"]
+[gd_scene load_steps=11 format=3 uid="uid://c58wjax2eyvgm"]
 
 [ext_resource type="Shader" uid="uid://csxon2ptntecx" path="res://shaders/crtscreen.gdshader" id="1_olg7q"]
 [ext_resource type="Shader" uid="uid://brf2fxm2ewmux" path="res://shaders/accumulator.gdshader" id="2_t1rx8"]
@@ -55,6 +55,14 @@ viewport_path = NodePath("SubViewport")
 shader = ExtResource("2_t1rx8")
 shader_parameter/decay = 0.010000000475
 shader_parameter/hard_cut = 0.0250000011875
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w8frs"]
+bg_color = Color(1, 1, 1, 0.08235294)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mx8sn"]
+bg_color = Color(1, 1, 1, 0.23137255)
+corner_detail = 1
 
 [node name="root" type="Node2D"]
 script = SubResource("GDScript_w8frs")
@@ -302,3 +310,15 @@ scale = Vector2(0.61, 0.61)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(960, 540)
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+z_index = 5
+offset_right = 1920.0
+offset_bottom = 30.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_w8frs")
+theme_override_styles/fill = SubResource("StyleBoxFlat_mx8sn")
+max_value = 33.485
+value = 23.37
+show_percentage = false
