@@ -13,7 +13,7 @@ config_version=5
 config/name="KlagenfurtGSEJam2025"
 run/main_scene="uid://dlfmexxr77roi"
 config/features=PackedStringArray("4.5", "GL Compatibility")
-config/icon="res://assets/sprites/icon.svg"
+config/icon="uid://b553cij0iend4"
 
 [display]
 
