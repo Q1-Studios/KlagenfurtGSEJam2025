@@ -122,18 +122,6 @@ tracks/3/keys = {
 "method": &"deathTransition"
 }]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("root/SubViewport/Music:stream")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 1,
-"values": []
-}
 
 [sub_resource type="Animation" id="Animation_8c41q"]
 length = 0.001
