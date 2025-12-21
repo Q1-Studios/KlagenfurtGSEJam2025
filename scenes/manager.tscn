@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://braju33b42mc7" path="res://scripts/manager.gd" id="1_bdh1m"]
 [ext_resource type="PackedScene" uid="uid://bjr3b5q84iffp" path="res://scenes/bar.tscn" id="2_bgrh2"]
-[ext_resource type="Resource" uid="uid://dad3d67mf0e8p" path="res://assets/beatmaps/test.tres" id="2_gq280"]
+[ext_resource type="Resource" uid="uid://bkgy0sxn6b0f3" path="res://assets/beatmaps/test.tres" id="2_gq280"]
 [ext_resource type="AudioStream" uid="uid://cbuu6rjekjsc6" path="res://Kygo & Selena Gomez - It Ain't Me (Codeko Remix).mp3" id="4_21v6b"]
 [ext_resource type="PackedScene" uid="uid://cu2eoqney7g6t" path="res://regularhex.tscn" id="5_gq280"]
 
@@ -54,7 +54,7 @@ keyName = "A"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_21v6b")
-volume_db = -40.0
+volume_db = -17.892
 
 [node name="Node2D" type="Node2D" parent="."]
 scale = Vector2(0.715, 0.715)
