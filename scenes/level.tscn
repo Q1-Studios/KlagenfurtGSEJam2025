@@ -5,11 +5,11 @@
 [ext_resource type="Script" uid="uid://dy7fu0maf3ug8" path="res://scripts/glitch_effect_sub_viewport.gd" id="2_2r41h"]
 [ext_resource type="Shader" uid="uid://brf2fxm2ewmux" path="res://shaders/accumulator.gdshader" id="2_t1rx8"]
 [ext_resource type="PackedScene" uid="uid://dlfmexxr77roi" path="res://scenes/manager.tscn" id="3_w8frs"]
-[ext_resource type="Script" path="res://scenes/standing_wave.gd" id="4_8iemx"]
-[ext_resource type="Script" path="res://scripts/score_label.gd" id="4_mx8sn"]
+[ext_resource type="Script" uid="uid://75u7easj0h8u" path="res://scenes/standing_wave.gd" id="4_8iemx"]
+[ext_resource type="Script" uid="uid://b0idrg4xodocc" path="res://scripts/score_label.gd" id="4_mx8sn"]
 [ext_resource type="PackedScene" uid="uid://cypocefdgcpb6" path="res://fancyhex.tscn" id="4_olg7q"]
-[ext_resource type="Script" path="res://scripts/music_progress_bar.gd" id="4_ppgk2"]
-[ext_resource type="Script" path="res://scripts/glitch_effect.gd" id="5_klq6b"]
+[ext_resource type="Script" uid="uid://cxj5w7n7ps51f" path="res://scripts/music_progress_bar.gd" id="4_ppgk2"]
+[ext_resource type="Script" uid="uid://dt8goso8xl5cc" path="res://scripts/glitch_effect.gd" id="5_klq6b"]
 [ext_resource type="AudioStream" uid="uid://dddb2yff3p4nx" path="res://assets/music/ContingencyPlant.ogg" id="7_8iemx"]
 [ext_resource type="FontFile" uid="uid://7u54b7ave0i7" path="res://assets/Fonts/ethnocen.ttf" id="8_8c41q"]
 [ext_resource type="AudioStream" uid="uid://og72yxktkit7" path="res://assets/sfx/glitch/glitch_out.ogg" id="8_8iemx"]
@@ -186,7 +186,7 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_b121j"]
 resource_name = "GlitchEffectAnimation"
-length = 2.0
+length = 2.5445
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -199,47 +199,47 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2i(1920, 1080), Vector2i(2010, 1080)]
 }
-tracks/1/type = "value"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SubViewport/Manager/AudioStreamPlayer:volume_db")
+tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-40.0, -80.0]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(2),
+"times": PackedFloat32Array(2.4666667),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"deathTransition"
 }]
 }
-tracks/3/type = "audio"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("SubViewport/GlitchSFX")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SubViewport/GlitchSFX")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
 "stream": ExtResource("8_8iemx")
 }],
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0.2)
 }
-tracks/3/use_blend = true
+tracks/2/use_blend = true
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SubViewport/Manager/Music:pitch_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.3333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.45]
+}
 
 [sub_resource type="Animation" id="Animation_8c41q"]
 length = 0.001
@@ -258,14 +258,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SubViewport/Manager/AudioStreamPlayer:volume_db")
+tracks/1/path = NodePath("SubViewport/Manager/Music:pitch_scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [-40.0]
+"values": [1.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_olg7q"]
@@ -470,7 +470,6 @@ scale = Vector2(0.61, 0.61)
 
 [node name="Music" parent="SubViewport/Manager" index="6"]
 stream = ExtResource("7_8iemx")
-volume_db = -40.0
 
 [node name="GlitchEffect" type="AnimationPlayer" parent="SubViewport"]
 root_node = NodePath("../..")
