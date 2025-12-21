@@ -110,10 +110,13 @@ script = ExtResource("2_bwlfd")
 
 [node name="BarSprite" type="Sprite2D" parent="PerfectBar"]
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 position = Vector2(0, 7.1)
 scale = Vector2(0.93, 0.23437499)
 texture = SubResource("GradientTexture2D_qdsxc")
 =======
+=======
+>>>>>>> Stashed changes
 visible = false
 position = Vector2(-9.536743e-07, -1.4901161e-08)
 scale = Vector2(60.8, 4.7083335)
