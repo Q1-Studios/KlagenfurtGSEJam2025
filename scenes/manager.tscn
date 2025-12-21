@@ -22,6 +22,9 @@ position = Vector2(6.0915947e-05, -385)
 scale = Vector2(7, 7)
 keyName = "S"
 
+[node name="PerfectCollision" parent="Bar/PerfectBar" index="1"]
+debug_color = Color(0.95207125, 9.62615e-08, 0.562937, 0.41960785)
+
 [node name="Bar2" parent="." instance=ExtResource("2_bgrh2")]
 position = Vector2(333, -193.00006)
 rotation = 1.0471976
@@ -145,3 +148,10 @@ points = PackedVector2Array(823, 1332, 823.336, 1332, 824.248, 1332, 825.592, 13
 [connection signal="okInnerHit" from="Bar6" to="." method="_on_bar_6_ok_inner_hit"]
 [connection signal="okOuterHit" from="Bar6" to="." method="_on_bar_6_ok_outer_hit"]
 [connection signal="perfectHit" from="Bar6" to="." method="_on_bar_6_perfect_hit"]
+
+[editable path="Bar"]
+[editable path="Bar2"]
+[editable path="Bar3"]
+[editable path="Bar4"]
+[editable path="Bar5"]
+[editable path="Bar6"]

@@ -110,6 +110,7 @@ texture = SubResource("GradientTexture2D_qdsxc")
 [node name="PerfectCollision" type="CollisionShape2D" parent="PerfectBar"]
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_x848m")
+debug_color = Color(0.9583222, 6.738305e-07, 0.5304147, 0.41960785)
 
 [node name="Line2D" type="Line2D" parent="PerfectBar"]
 points = PackedVector2Array(-30, 0, 30, 0)

@@ -577,3 +577,4 @@ manager = NodePath("../SubViewport/Manager")
 [connection signal="perfectSignal" from="SubViewport/Manager" to="SubViewport/Miss_Great_Perfect" method="_on_manager_perfect_signal"]
 
 [editable path="SubViewport/Manager"]
+[editable path="SubViewport/Manager/Bar"]
