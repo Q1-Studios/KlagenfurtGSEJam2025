@@ -43,6 +43,7 @@ func _input(event: InputEvent) -> void:
 			$PerfectBar/Line2D/AnimationPlayer.play("blink")
 		else:
 			noHit.emit()
+			$PerfectBar/Line2D/AnimationPlayer.play("failedhit")
 			
 
 func hit(targetList:Array):
