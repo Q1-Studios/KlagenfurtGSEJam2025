@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://braju33b42mc7" path="res://scripts/manager.gd" id="1_bdh1m"]
 [ext_resource type="PackedScene" uid="uid://bjr3b5q84iffp" path="res://scenes/bar.tscn" id="2_bgrh2"]
 [ext_resource type="Resource" uid="uid://bkgy0sxn6b0f3" path="res://assets/beatmaps/test.tres" id="2_gq280"]
-[ext_resource type="PackedScene" uid="uid://cu2eoqney7g6t" path="res://regularhex.tscn" id="5_gq280"]
+[ext_resource type="PackedScene" uid="uid://cu2eoqney7g6t" path="res://scenes/regularhex.tscn" id="5_gq280"]
 
-[node name="Manager" type="Node2D" node_paths=PackedStringArray("bar1", "bar2", "bar3", "bar4", "bar5", "bar6", "music")]
+[node name="Manager" type="Node2D" node_paths=PackedStringArray("bar1", "bar2", "bar3", "bar4", "bar5", "bar6")]
 script = ExtResource("1_bdh1m")
 beatMap = ExtResource("2_gq280")
 bar1 = NodePath("Bar")
@@ -14,7 +14,6 @@ bar3 = NodePath("Bar3")
 bar4 = NodePath("Bar4")
 bar5 = NodePath("Bar5")
 bar6 = NodePath("Bar6")
-music = NodePath("")
 
 [node name="Bar" parent="." instance=ExtResource("2_bgrh2")]
 position = Vector2(6.0915947e-05, -385)
