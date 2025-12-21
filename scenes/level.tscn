@@ -47,7 +47,7 @@ adjustment_enabled = true
 adjustment_brightness = 0.99
 adjustment_contrast = 0.96
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5gdhr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fpun6"]
 shader = ExtResource("1_olg7q")
 shader_parameter/scanline_count = 43.06400204554
 shader_parameter/scanline_speed = 0.05
@@ -57,7 +57,7 @@ shader_parameter/rgb_offset_uv = 0.0
 shader_parameter/curvature = 0.35
 shader_parameter/screen_aspect = Vector2(16, 9)
 shader_parameter/phosphor_bias_red = 1.0
-shader_parameter/phosphor_bias_blue = 1.0
+shader_parameter/phosphor_bias_blue = 1.15
 shader_parameter/phosphor_bias_green = 1.0
 shader_parameter/phosphor_clamp = 1.045
 shader_parameter/noise_strength = 0.0250000011875
@@ -303,7 +303,7 @@ script = SubResource("GDScript_w8frs")
 environment = SubResource("Environment_5gdhr")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-material = SubResource("ShaderMaterial_5gdhr")
+material = SubResource("ShaderMaterial_fpun6")
 offset_right = 40.0
 offset_bottom = 40.0
 texture = SubResource("ViewportTexture_b4inp")
