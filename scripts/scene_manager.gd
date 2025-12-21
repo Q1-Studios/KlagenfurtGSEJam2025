@@ -9,6 +9,7 @@ var levelScene
 var scoreScene
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	pass
 	menuScene = load("res://scenes/mainmenu.tscn")
 	levelScene = load("res://scenes/level.tscn")
 	scoreScene = load("res://scenes/scoreScene.tscn")
