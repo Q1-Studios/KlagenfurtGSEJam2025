@@ -93,7 +93,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(1, 0, 0, 1)
 
-[node name="MenuGUI" parent="SubViewport" instance=ExtResource("3_r3g3c")]
+[node name="MenuGUI" parent="SubViewport" node_paths=PackedStringArray("environment") instance=ExtResource("3_r3g3c")]
+environment = NodePath("../../WorldEnvironment")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(960, 540)
