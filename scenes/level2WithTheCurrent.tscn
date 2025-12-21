@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bamdewqkrikpq"]
+
+[ext_resource type="PackedScene" uid="uid://c58wjax2eyvgm" path="res://scenes/level.tscn" id="1_5xonq"]
+[ext_resource type="Resource" uid="uid://by8mvxhngf53p" path="res://assets/beatmaps/With the current.tres" id="2_302s3"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_lcxik"]
+viewport_path = NodePath("SubViewport")
+
+[node name="root" instance=ExtResource("1_5xonq")]
+
+[node name="TextureRect" parent="." index="1"]
+texture = SubResource("ViewportTexture_lcxik")
+
+[node name="Manager" parent="SubViewport" index="0"]
+beatMap = ExtResource("2_302s3")
+
+[editable path="SubViewport/Manager"]
+[editable path="SubViewport/Manager/Bar"]
+[editable path="SubViewport/Manager/Bar2"]
+[editable path="SubViewport/Manager/Bar3"]
+[editable path="SubViewport/Manager/Bar4"]
+[editable path="SubViewport/Manager/Bar5"]
+[editable path="SubViewport/Manager/Bar6"]
