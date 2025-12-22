@@ -20,8 +20,6 @@ func _process(_delta):
 		$SubViewport/MenuGUI/PRESSANYKEY.hide()
 		$SubViewport/MenuGUI/MenuButtons/AnimationPlayer.play(\"swoopin\")
 		anykeyhidden = true
-func quitgame():
-	get_tree().quit()
 "
 
 [sub_resource type="Environment" id="Environment_5gdhr"]
