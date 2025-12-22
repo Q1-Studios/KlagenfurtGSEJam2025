@@ -20,9 +20,9 @@ var OKPOINTS:int = 200
 var points:int = 0
 
 #End screen counters
-var perfectAmount:int
-var okAmount:int
-var missAmount:int
+var perfectAmount:int = 0
+var okAmount:int = 0
+var missAmount:int = 0
 
 #Health
 var DAMAGE:int = 10
