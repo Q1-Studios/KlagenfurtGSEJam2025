@@ -49,7 +49,7 @@ var currentSongProgress:float = 0
 #TODO
 # would be nice if we could add hexagon rotation as a next level gimmick
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
 	globalStartTime = Time.get_unix_time_from_system()
 	songLength = int(music.stream.get_length() * 1000)
@@ -105,107 +105,23 @@ func _process(delta: float) -> void:
 					_:
 						print("waiting")
 
-
 func _on_bar_perfect_hit() -> void:
 	print("bar1 perfect")
-	$Bar/PerfectBar/Line2D/AnimationPlayer.play("blinkspecial")
+	#$Bar/PerfectBar/Line2D/AnimationPlayer.play("blinkspecial")
 	perfectHit()
 func _on_bar_ok_inner_hit() -> void:
 	print("bar1 ok")
-	$Bar/PerfectBar/Line2D/AnimationPlayer.play("blink")
+	#$Bar/PerfectBar/Line2D/AnimationPlayer.play("blink")
 	okHit()
 func _on_bar_ok_outer_hit() -> void:
 	print("bar1 ok")
-	$Bar/PerfectBar/Line2D/AnimationPlayer.play("blink")
+	#$Bar/PerfectBar/Line2D/AnimationPlayer.play("blink")
 	okHit()
-
-func _on_bar_2_perfect_hit() -> void:
-	print("bar2 perfect")
-	$Bar2/PerfectBar/Line2D/AnimationPlayer.play("blinkspecial")
-	perfectHit()
-func _on_bar_2_ok_outer_hit() -> void:
-	print("bar2 ok")
-	$Bar2/PerfectBar/Line2D/AnimationPlayer.play("blink")
-	okHit()
-func _on_bar_2_ok_inner_hit() -> void:
-	print("bar2 ok")
-	$Bar2/PerfectBar/Line2D/AnimationPlayer.play("blink")
-	okHit()
-
-func _on_bar_3_perfect_hit() -> void:
-	print("bar3 perfect")
-	$Bar3/PerfectBar/Line2D/AnimationPlayer.play("blinkspecial")
-	perfectHit()
-func _on_bar_3_ok_outer_hit() -> void:
-	print("bar3 ok")
-	$Bar3/PerfectBar/Line2D/AnimationPlayer.play("blink")
-	okHit()
-func _on_bar_3_ok_inner_hit() -> void:
-	print("bar3 ok")
-	$Bar3/PerfectBar/Line2D/AnimationPlayer.play("blink")
-	okHit()
-
-func _on_bar_4_perfect_hit() -> void:
-	print("bar4 perfect")
-	$Bar4/PerfectBar/Line2D/AnimationPlayer.play("blinkspecial")
-	perfectHit()
-func _on_bar_4_ok_outer_hit() -> void:
-	print("bar4 ok")
-	$Bar4/PerfectBar/Line2D/AnimationPlayer.play("blink")
-	okHit()
-func _on_bar_4_ok_inner_hit() -> void:
-	print("bar4 ok")
-	$Bar4/PerfectBar/Line2D/AnimationPlayer.play("blink")
-	okHit()
-
-func _on_bar_5_perfect_hit() -> void:
-	print("bar5 perfect")
-	$Bar5/PerfectBar/Line2D/AnimationPlayer.play("blinkspecial")
-	perfectHit()
-func _on_bar_5_ok_outer_hit() -> void:
-	print("bar5 ok")
-	$Bar5/PerfectBar/Line2D/AnimationPlayer.play("blink")
-	okHit()
-func _on_bar_5_ok_inner_hit() -> void:
-	print("bar5 ok")
-	$Bar5/PerfectBar/Line2D/AnimationPlayer.play("blink")
-	okHit()
-
-func _on_bar_6_perfect_hit() -> void:
-	print("bar6 perfect")
-	$Bar6/PerfectBar/Line2D/AnimationPlayer.play("blinkspecial")
-	perfectHit()
-func _on_bar_6_ok_outer_hit() -> void:
-	print("bar6 ok")
-	$Bar6/PerfectBar/Line2D/AnimationPlayer.play("blink")
-	okHit()
-func _on_bar_6_ok_inner_hit() -> void:
-	print("bar6 ok")
-	$Bar6/PerfectBar/Line2D/AnimationPlayer.play("blink")
-	okHit()
-
 
 func _on_bar_no_hit() -> void:
-	$Bar/PerfectBar/Line2D/AnimationPlayer.play("failedhit")
+	#$Bar/PerfectBar/Line2D/AnimationPlayer.play("failedhit")
 	missed()
-func _on_bar_2_no_hit() -> void:
-	$Bar2/PerfectBar/Line2D/AnimationPlayer.play("failedhit")
-	missed()
-func _on_bar_3_no_hit() -> void:
-	$Bar3/PerfectBar/Line2D/AnimationPlayer.play("failedhit")
-	missed()
-func _on_bar_4_no_hit() -> void:
-	$Bar4/PerfectBar/Line2D/AnimationPlayer.play("failedhit")
-	missed()
-func _on_bar_5_no_hit() -> void:
-	$Bar5/PerfectBar/Line2D/AnimationPlayer.play("failedhit")
-	missed()
-func _on_bar_6_no_hit() -> void:
-	$Bar6/PerfectBar/Line2D/AnimationPlayer.play("failedhit")
-	missed()
-
-
-
+	
 func missed():
 	health -= DAMAGE
 	health = clamp(health, 0, 100)
@@ -226,6 +142,7 @@ func okHit():
 	$"Miss_Great_Perfect/MISS".hide()
 	$"Miss_Great_Perfect/PERFECT".hide()
 	$"Miss_Great_Perfect/GREAT".show()
+
 func perfectHit():
 	health += RECOVER
 	health = clamp(health, 0, 100)

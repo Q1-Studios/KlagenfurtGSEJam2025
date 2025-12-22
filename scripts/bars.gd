@@ -13,7 +13,7 @@ signal noHit
 var randomEnemyOffsetX: int
 var enemyDestination: Vector2
 var enemy = preload("res://scenes/enemy.tscn")
-
+@onready var animationPlayer:AnimationPlayer = $PerfectBar/Line2D/AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -32,18 +32,18 @@ func _input(event: InputEvent) -> void:
 		#print(keyName)
 		if hit(perfectBar.enemyList):
 			perfectHit.emit()
-			$PerfectBar/Line2D/AnimationPlayer.play("blinkspecial")
+			animationPlayer.play("blinkspecial")
 			#print("hit")
 			#print(Time.get_unix_time_from_system())
 		elif hit(okInnerBar.enemyList):
 			okInnerHit.emit()
-			$PerfectBar/Line2D/AnimationPlayer.play("blink")
+			animationPlayer.play("blink")
 		elif hit(okOuterBar.enemyList):
 			okOuterHit.emit()
-			$PerfectBar/Line2D/AnimationPlayer.play("blink")
+			animationPlayer.play("blink")
 		else:
 			noHit.emit()
-			$PerfectBar/Line2D/AnimationPlayer.play("failedhit")
+			animationPlayer.play("failedhit")
 			
 
 func hit(targetList:Array):
