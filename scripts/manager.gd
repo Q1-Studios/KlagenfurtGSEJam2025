@@ -132,6 +132,7 @@ func missed():
 	$"Miss_Great_Perfect/MISS".show()
 	$"Miss_Great_Perfect/PERFECT".hide()
 	$"Miss_Great_Perfect/GREAT".hide()
+	$Miss_Great_Perfect/MISS/AnimationPlayer.play("swobble")
 
 func okHit():
 	points += OKPOINTS
@@ -142,6 +143,7 @@ func okHit():
 	$"Miss_Great_Perfect/MISS".hide()
 	$"Miss_Great_Perfect/PERFECT".hide()
 	$"Miss_Great_Perfect/GREAT".show()
+	$Miss_Great_Perfect/GREAT/AnimationPlayer.play("swobble")
 
 func perfectHit():
 	health += RECOVER
@@ -155,3 +157,4 @@ func perfectHit():
 	$"Miss_Great_Perfect/MISS".hide()
 	$"Miss_Great_Perfect/PERFECT".show()
 	$"Miss_Great_Perfect/GREAT".hide()
+	$Miss_Great_Perfect/PERFECT/AnimationPlayer.play("swobble")
