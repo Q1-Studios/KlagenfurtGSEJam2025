@@ -30,21 +30,24 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed(keyName):
 	#if event is InputEventKey and event.is_pressed() and event.as_text_keycode() == keyName:
 		#print(keyName)
-		if hit(perfectBar.enemyList):
-			perfectHit.emit()
-			animationPlayer.play("blinkspecial")
-			#print("hit")
-			#print(Time.get_unix_time_from_system())
-		elif hit(okInnerBar.enemyList):
-			okInnerHit.emit()
-			animationPlayer.play("blink")
-		elif hit(okOuterBar.enemyList):
-			okOuterHit.emit()
-			animationPlayer.play("blink")
-		else:
-			noHit.emit()
-			animationPlayer.play("failedhit")
-			
+		evaluate_hits()
+
+func _on_touch_screen_button_pressed() -> void:
+	evaluate_hits()
+
+func evaluate_hits() -> void:
+	if hit(perfectBar.enemyList):
+		perfectHit.emit()
+		animationPlayer.play("blinkspecial")
+	elif hit(okInnerBar.enemyList):
+		okInnerHit.emit()
+		animationPlayer.play("blink")
+	elif hit(okOuterBar.enemyList):
+		okOuterHit.emit()
+		animationPlayer.play("blink")
+	else:
+		noHit.emit()
+		animationPlayer.play("failedhit")
 
 func hit(targetList:Array):
 	var containsEnemy: bool = !targetList.is_empty()
