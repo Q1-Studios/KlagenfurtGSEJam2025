@@ -1,14 +1,20 @@
 extends Node
 class_name ButtonSoundPlayer
 
-@onready var parent_area: Area2D = $".."
+@onready var parent_area: Node = $".."
 
 @export var click_sfx: AudioStreamPlayer
 @export var hover_sfx: AudioStreamPlayer
 
 func _ready() -> void:
-	parent_area.area_entered.connect(_on_area_entered)
+	if parent_area is Button:
+		parent_area.mouse_entered.connect(_on_mouse_entered)
+		parent_area.pressed.connect(_on_pressed)
+	else:
+		print("Legacy Button: " + parent_area.name)
 
-func _on_area_entered(area: Area2D) -> void:
-	if area.is_in_group("MouseArea"):
-		hover_sfx.play()
+func _on_mouse_entered() -> void:
+	hover_sfx.play()
+	
+func _on_pressed() -> void:
+	click_sfx.play()

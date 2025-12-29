@@ -39,17 +39,11 @@ func change_template(new_template: ReferenceRect):
 		current_instances.append(new_instance)
 		add_child(new_instance)
 
-
-func _on_level1_selected() -> void:
-	change_template(level1_template)
-	print("Level1")
-
-
-func _on_level2_selected() -> void:
-	change_template(level2_template)
-	print("Level2")
-
-
-func _on_level3_selected() -> void:
-	change_template(level3_template)
-	print("Level3")
+func _on_level_selected(level: int) -> void:
+	match level:
+		1:
+			change_template(level1_template)
+		2:
+			change_template(level2_template)
+		3:
+			change_template(level3_template)

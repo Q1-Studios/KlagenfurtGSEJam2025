@@ -12,16 +12,12 @@ func _process(delta: float) -> void:
 		if transition_time <= 0:
 			get_tree().change_scene_to_packed(transition_target)
 
-func _on_level1_clicked() -> void:
-	transition_target = SceneManager.levelScene
-	transitioning.emit()
-
-
-func _on_level2_clicked() -> void:
-	transition_target = SceneManager.level2Scene
-	transitioning.emit()
-
-
-func _on_level3_clicked() -> void:
-	transition_target = SceneManager.level3Scene
+func _on_level_clicked(level: int) -> void:
+	match level:
+		1: 
+			transition_target = SceneManager.levelScene
+		2:
+			transition_target = SceneManager.level2Scene
+		3:
+			transition_target = SceneManager.level3Scene
 	transitioning.emit()

@@ -10,8 +10,7 @@
 resource_name = "fwd"
 script/source = "extends Node2D
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion or event is InputEventMouseButton:
-		$SubViewport.push_input(event,false)
+		$SubViewport.push_input(event)
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 var anykeyhidden = false
@@ -92,6 +91,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 1
 color = Color(1, 0, 0, 1)
 
 [node name="MenuGUI" parent="SubViewport" node_paths=PackedStringArray("environment") instance=ExtResource("3_r3g3c")]

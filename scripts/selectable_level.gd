@@ -1,40 +1,35 @@
-extends Area2D
+extends Button
 
 @export var selected_modulate: Color = Color(1.5, 0.8, 0.2)
 @export var default_select: bool = false
+@export var level_num: int = 1
 
 @onready var default_modulate: Color = modulate
-@onready var btn_sound_player: ButtonSoundPlayer = $ButtonSoundPlayer
 
 var selected: bool = false
 
-signal level_clicked
-signal level_selected
+signal level_clicked(level)
+signal level_selected(level)
 
 func _ready() -> void:
-	area_entered.connect(_on_area_entered)
-	area_exited.connect(_on_area_exited)
+	mouse_entered.connect(_on_mouse_entered)
+	mouse_exited.connect(_on_mouse_exited)
+	pressed.connect(_on_pressed)
 	
 	if default_select:
 		select()
 
-func _on_area_entered(area: Area2D):
-	if area.is_in_group("MouseArea") and is_visible_in_tree():
+func _on_mouse_entered() -> void:
+	if is_visible_in_tree():
 		select()
 	
-func _on_area_exited(area: Area2D):
-	if area.is_in_group("MouseArea"):
-		selected = false
+func _on_mouse_exited() -> void:
 		modulate = default_modulate
 
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		var e: InputEventMouseButton = event
-		if e.pressed and selected and is_visible_in_tree():
-			btn_sound_player.click_sfx.play()
-			level_clicked.emit()
+func _on_pressed() -> void:
+	if is_visible_in_tree():
+		level_clicked.emit(level_num)
 
 func select():
-	selected = true
 	modulate = selected_modulate
-	level_selected.emit()
+	level_selected.emit(level_num)
