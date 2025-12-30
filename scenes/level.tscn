@@ -16,6 +16,7 @@
 [ext_resource type="FontFile" uid="uid://7u54b7ave0i7" path="res://assets/Fonts/ethnocen.ttf" id="8_8c41q"]
 [ext_resource type="AudioStream" uid="uid://og72yxktkit7" path="res://assets/sfx/glitch/glitch_out.ogg" id="8_8iemx"]
 [ext_resource type="Script" uid="uid://dyo8auhpbh0wj" path="res://scripts/touch_restart_button.gd" id="12_arp2o"]
+[ext_resource type="Script" uid="uid://cs66hbmybsb40" path="res://scripts/camera_bop.gd" id="13_ux5qa"]
 
 [sub_resource type="GDScript" id="GDScript_w8frs"]
 resource_name = "forward_keyboard_inputs"
@@ -294,33 +295,6 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wc255"]
 size = Vector2(120, 120)
 
-[sub_resource type="GDScript" id="GDScript_wc255"]
-resource_name = "bop"
-script/source = "extends Camera2D
-
-var spectrum := AudioServer.get_bus_effect_instance(
-	1, 0
-) as AudioEffectSpectrumAnalyzerInstance
-
-@export var zoom_amount := 0.038
-@export var smooth_speed := 10.0
-
-var current_zoom := 1.0
-
-@export var attack_speed = 14.0
-@export var release_speed = 7.0
-@export var range_low = 20
-@export var range_high = 100
-func _process(delta):
-	var low = spectrum.get_magnitude_for_frequency_range(range_low, range_high).length()
-	var energy = clamp(low * 5, 0.0, 1.0)
-	var target_zoom = 1.0 + energy * zoom_amount
-
-	var speed = attack_speed if target_zoom > current_zoom else release_speed
-	current_zoom = lerp(current_zoom, target_zoom, 1.0 - exp(-speed * delta))
-	zoom = Vector2.ONE * current_zoom
-"
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w8frs"]
 bg_color = Color(0, 0, 0, 0.08235294)
 corner_detail = 1
@@ -553,8 +527,7 @@ points = PackedVector2Array(1778, 313, 1777.22, 312.788, 1775.09, 312.212, 1771.
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(960, 540)
-script = SubResource("GDScript_wc255")
-range_high = 300
+script = ExtResource("13_ux5qa")
 
 [node name="MusicProgressBar" type="ProgressBar" parent="." node_paths=PackedStringArray("manager")]
 z_index = 5

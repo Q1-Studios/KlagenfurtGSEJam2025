@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://tl36e353nly5"]
+[gd_scene load_steps=10 format=3 uid="uid://tl36e353nly5"]
 
 [ext_resource type="Shader" uid="uid://csxon2ptntecx" path="res://shaders/crtscreen.gdshader" id="1_362ok"]
 [ext_resource type="Shader" uid="uid://brf2fxm2ewmux" path="res://shaders/accumulator.gdshader" id="2_wxyue"]
 [ext_resource type="PackedScene" uid="uid://bhx5efbk25at7" path="res://scenes/ScoreGUI.tscn" id="3_xllif"]
+[ext_resource type="Script" uid="uid://cs66hbmybsb40" path="res://scripts/camera_bop.gd" id="4_kta5c"]
 
 [sub_resource type="GDScript" id="GDScript_uphyt"]
 resource_name = "fwd"
@@ -92,3 +93,5 @@ color = Color(1, 0, 0, 1)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(271, 88)
 offset = Vector2(690, 450)
+script = ExtResource("4_kta5c")
+range_high = 300

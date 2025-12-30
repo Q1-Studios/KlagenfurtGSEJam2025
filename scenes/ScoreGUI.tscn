@@ -229,6 +229,7 @@ script = ExtResource("5_7xfkq")
 metadata/_edit_use_anchors_ = true
 
 [node name="RepriseMusic" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
 script = ExtResource("8_1bmex")
 level1_reprise = ExtResource("9_otn0o")
 level2_reprise = ExtResource("10_otn0o")
