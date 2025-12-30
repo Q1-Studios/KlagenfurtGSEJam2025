@@ -22,7 +22,7 @@ resource_name = "forward_keyboard_inputs"
 script/source = "extends Node2D
 
 
-@export var scene_name: String
+@export var scene_name: ManagerGlobal.LevelIds
 @export var sub_viewport: SubViewport
 
 func _ready() -> void:
@@ -331,7 +331,6 @@ corner_detail = 1
 
 [node name="root" type="Node2D" node_paths=PackedStringArray("sub_viewport")]
 script = SubResource("GDScript_w8frs")
-scene_name = "Level1"
 sub_viewport = NodePath("SubViewport")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
