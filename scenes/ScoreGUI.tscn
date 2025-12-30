@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bhx5efbk25at7"]
+[gd_scene load_steps=21 format=3 uid="uid://bhx5efbk25at7"]
 
 [ext_resource type="PackedScene" uid="uid://dr4mxxdydivm4" path="res://scenes/restartbutton.tscn" id="1_7xfkq"]
 [ext_resource type="Script" uid="uid://ceov5hw4m2am7" path="res://scripts/score_gui.gd" id="1_8bkue"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://baybfgj38cd2g" path="res://assets/music/ContingencyPlantReprise.ogg" id="9_otn0o"]
 [ext_resource type="AudioStream" uid="uid://d2h8wv02d4dgc" path="res://assets/music/WithTheCurrent_Reprise.ogg" id="10_otn0o"]
 [ext_resource type="AudioStream" uid="uid://cpq5o1nnwfx41" path="res://assets/music/WarpSpeed_OhmBeatEdit_Reprise.ogg" id="11_mu0s0"]
+[ext_resource type="Script" uid="uid://c6moxo5qoybc0" path="res://scripts/platform_text.gd" id="12_m4d8m"]
 
 [sub_resource type="Animation" id="Animation_dfy5j"]
 length = 0.001
@@ -168,6 +169,37 @@ init_focus = NodePath("MenuButtons/RestartButton")
 [node name="CursorWave" parent="." instance=ExtResource("2_8bkue")]
 position = Vector2(918.2888, 502.03766)
 
+[node name="OutcomeText" type="Label" parent="."]
+offset_right = 1920.0
+offset_bottom = 300.0
+theme_override_fonts/font = ExtResource("4_f1sb5")
+theme_override_font_sizes/font_size = 100
+text = "Song complete"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("6_nq3vv")
+success_text = "Song complete"
+failure_text = "Failure"
+metadata/_edit_use_anchors_ = true
+
+[node name="ScoresText" type="RichTextLabel" parent="."]
+offset_left = 259.0
+offset_top = 250.0
+offset_right = 1899.0
+offset_bottom = 802.0
+theme_override_fonts/normal_font = ExtResource("4_f1sb5")
+theme_override_font_sizes/normal_font_size = 60
+text = "
+Perfect:						20x
+
+Great:						10x
+
+Miss:							5x
+
+Total Score:			100000 Pts"
+script = ExtResource("5_7xfkq")
+metadata/_edit_use_anchors_ = true
+
 [node name="MenuButtons" type="Node2D" parent="."]
 position = Vector2(2099.425, 509.89)
 scale = Vector2(0.38, 0.38)
@@ -197,35 +229,18 @@ focus_neighbor_left = NodePath("../RestartButton")
 script = SubResource("GDScript_85riq")
 metadata/_edit_use_anchors_ = true
 
-[node name="OutcomeText" type="Label" parent="."]
-offset_right = 1920.0
-offset_bottom = 300.0
+[node name="PlatformText" type="Label" parent="."]
+offset_left = 900.0
+offset_top = 1000.0
+offset_right = 1000.0
+offset_bottom = 1026.0
+theme_override_colors/font_color = Color(0.13319641, 0.13319641, 0.13319635, 1)
 theme_override_fonts/font = ExtResource("4_f1sb5")
-theme_override_font_sizes/font_size = 100
-text = "Song complete"
+theme_override_font_sizes/font_size = 18
+text = "Mobile"
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("6_nq3vv")
-success_text = "Song complete"
-failure_text = "Failure"
-metadata/_edit_use_anchors_ = true
-
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = 259.0
-offset_top = 250.0
-offset_right = 1899.0
-offset_bottom = 802.0
-theme_override_fonts/normal_font = ExtResource("4_f1sb5")
-theme_override_font_sizes/normal_font_size = 60
-text = "
-Perfect:						20x
-
-Great:						10x
-
-Miss:							5x
-
-Total Score:			100000 Pts"
-script = ExtResource("5_7xfkq")
+script = ExtResource("12_m4d8m")
 metadata/_edit_use_anchors_ = true
 
 [node name="RepriseMusic" type="AudioStreamPlayer" parent="."]
