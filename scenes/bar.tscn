@@ -180,6 +180,7 @@ shape = SubResource("RectangleShape2D_qdsxc")
 [node name="MissSFX" type="AudioStreamPlayer" parent="MissBar"]
 stream = SubResource("AudioStreamRandomizer_cmq8q")
 volume_db = -20.0
+bus = &"SFX"
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="."]
 shape = SubResource("ConvexPolygonShape2D_l1w72")

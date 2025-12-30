@@ -299,7 +299,7 @@ resource_name = "bop"
 script/source = "extends Camera2D
 
 var spectrum := AudioServer.get_bus_effect_instance(
-	0, 0
+	1, 0
 ) as AudioEffectSpectrumAnalyzerInstance
 
 @export var zoom_amount := 0.038
@@ -362,6 +362,7 @@ music = NodePath("../Music")
 [node name="Music" type="AudioStreamPlayer" parent="SubViewport"]
 stream = ExtResource("7_8iemx")
 volume_db = 5.0
+bus = &"Music"
 script = ExtResource("6_wc255")
 
 [node name="GlitchEffect" type="AnimationPlayer" parent="SubViewport"]
@@ -373,6 +374,7 @@ script = ExtResource("5_klq6b")
 
 [node name="GlitchSFX" type="AudioStreamPlayer" parent="SubViewport"]
 volume_db = -10.0
+bus = &"SFX"
 
 [node name="ColorRect2" type="ColorRect" parent="SubViewport"]
 material = SubResource("ShaderMaterial_wc255")
