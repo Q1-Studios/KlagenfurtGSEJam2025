@@ -33,6 +33,7 @@ func _input(event: InputEvent) -> void:
 		evaluate_hits()
 
 func _on_touch_screen_button_pressed() -> void:
+	Input.vibrate_handheld(20, 0.5)
 	evaluate_hits()
 
 func evaluate_hits() -> void:

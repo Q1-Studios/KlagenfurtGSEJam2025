@@ -26,6 +26,7 @@ func _process(delta: float) -> void:
 func _on_pressed() -> void:
 	pressing = true
 	modulate = pressed_modulate
+	Input.vibrate_handheld(50, 0.5)
 
 func _on_released() -> void:
 	pressing = false
