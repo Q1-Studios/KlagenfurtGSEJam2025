@@ -1,4 +1,6 @@
 extends Node2D
+class_name HitBar
+
 @export var keyName: String
 @export_group("internal")
 @export var okInnerBar:SuccessZone
@@ -59,14 +61,14 @@ func hit(targetList:Array):
 			x.queue_free()
 	return containsEnemy
 
-func spawnEnemy():
-	#print("spawn call works")
-	var instance = enemy.instantiate()
+func spawnEnemy(spawn_delay_ms: int = 0):
+	var instance: Enemy = enemy.instantiate()
 	#randomEnemyOffsetX = randi_range(-20, 20)
 	#instance.position.x = randomEnemyOffsetX
 	instance.position.y = -50
 	instance.endPosition = $PerfectBar.position
 	instance.speed = 0.5
+	instance.spawn_delay_ms = spawn_delay_ms
 	add_child(instance)
 
 

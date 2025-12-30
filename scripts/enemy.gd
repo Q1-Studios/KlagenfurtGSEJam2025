@@ -1,15 +1,20 @@
 extends Node2D
+class_name Enemy
+
 var startPosition:Vector2
 var endPosition: Vector2
 var speed: float
 var progress: float = 0.0
+var spawn_delay_ms: int = 0
 
 # Called when the node enters the scene tree for the first time.
 
 func _ready() -> void:
 	startPosition = position 
-	#print("i spawned")
-	pass # Replace with function body.
+	
+	# Since an enemy may be spawned "too late"
+	# set the initial progress to where it would have moved during the delay
+	progress = (float(spawn_delay_ms) / 1000) * speed
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

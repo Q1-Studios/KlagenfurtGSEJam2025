@@ -2,12 +2,12 @@ extends Node2D
 @export var beatMap:Beatmap
 @export var restartHoldRequirement: float = 1.5
 
-@export var bar1:Node2D
-@export var bar2:Node2D
-@export var bar3:Node2D
-@export var bar4:Node2D
-@export var bar5:Node2D
-@export var bar6:Node2D
+@export var bar1:HitBar
+@export var bar2:HitBar
+@export var bar3:HitBar
+@export var bar4:HitBar
+@export var bar5:HitBar
+@export var bar6:HitBar
 @export var music:AudioStreamPlayer
 @export var progressBar:TextureProgressBar
 
@@ -86,30 +86,34 @@ func _process(delta: float) -> void:
 	if enemyTracker < beatMapLength:
 			currentEnemyKey = beatMap.data[enemyTracker].key
 			currentEnemyTime = beatMap.data[enemyTracker].milliseconds 
-			#print(beatMap.data[enemyTracker].key)
 			currentMusicTime = int(1000 * (music.get_playback_position() + AudioServer.get_time_to_next_mix() + musicLatency))
-			if (currentMusicTime >= currentEnemyTime - 2000):
-				##erstes hit object darf nicht < 2000ms sein
+			
+			var spawnTime: int = currentEnemyTime - 2000 # Enemy spawns 2000ms before it hits the bar
+			if (currentMusicTime >= spawnTime):
+				# erstes hit object darf nicht < 2000ms sein
+				
+				var spawnDelay: int = currentMusicTime - spawnTime
+				
 				match currentEnemyKey:
 					"S":
 						print("Spawn")
 						print(Time.get_unix_time_from_system())
-						bar1.spawnEnemy()
+						bar1.spawnEnemy(spawnDelay)
 						enemyTracker += 1
 					"D":
-						bar2.spawnEnemy()
+						bar2.spawnEnemy(spawnDelay)
 						enemyTracker += 1
 					"L":
-						bar3.spawnEnemy()
+						bar3.spawnEnemy(spawnDelay)
 						enemyTracker += 1
 					"K":
-						bar4.spawnEnemy()
+						bar4.spawnEnemy(spawnDelay)
 						enemyTracker += 1
 					"J":
-						bar5.spawnEnemy()
+						bar5.spawnEnemy(spawnDelay)
 						enemyTracker += 1
 					"A":
-						bar6.spawnEnemy()
+						bar6.spawnEnemy(spawnDelay)
 						enemyTracker += 1
 					_:
 						print("waiting")
