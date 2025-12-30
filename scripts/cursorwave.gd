@@ -9,6 +9,9 @@ extends Line2D
 var time: float = 0.0
 
 func _ready() -> void:
+	if Globals.is_mobile:
+		hide()
+	
 	global_position = get_global_mouse_position()
 	global_position.y += 25
 	update_rippling_shape()
