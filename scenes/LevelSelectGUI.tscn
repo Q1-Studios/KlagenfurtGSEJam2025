@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cceqruxjb1v5j" path="res://scenes/level_select_exit_btn.tscn" id="2_g5sca"]
 [ext_resource type="PackedScene" uid="uid://62bl1hreor1j" path="res://scenes/level_select_btn.tscn" id="2_onb6o"]
 [ext_resource type="Script" uid="uid://cm01dxdx4wlcn" path="res://scripts/h_scroller.gd" id="3_mexx4"]
-[ext_resource type="Script" uid="uid://choyfx2rmvpky" path="res://scripts/level_select_exit_btn_grace.gd" id="3_qntl6"]
+[ext_resource type="PackedScene" uid="uid://idb1j54md8ec" path="res://scenes/button_grace_area_mobile.tscn" id="3_onb6o"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mexx4"]
 
@@ -638,19 +638,8 @@ default_color = Color(0, 0, 0, 1)
 [node name="ExitButton" parent="." node_paths=PackedStringArray("root") instance=ExtResource("2_g5sca")]
 root = NodePath("..")
 
-[node name="MobileGraceArea" parent="ExitButton" node_paths=PackedStringArray("root", "actual_button") instance=ExtResource("2_g5sca")]
+[node name="MobileGraceArea" parent="ExitButton" instance=ExtResource("3_onb6o")]
 layout_mode = 0
-offset_left = -119.0
-offset_top = 0.0
-offset_right = -1.0
-offset_bottom = 150.0
-focus_neighbor_bottom = NodePath("../../Levels/HBoxContainer/ContingencyPlant/LevelSelectBtn")
-script = ExtResource("3_qntl6")
-root = NodePath("../..")
-actual_button = NodePath("..")
-
-[node name="BackArrow" parent="ExitButton/MobileGraceArea" index="1"]
-visible = false
 
 [node name="Levels" type="Node2D" parent="."]
 
@@ -1110,12 +1099,9 @@ points = PackedVector2Array(1504.16, 227.02, 1505.94, 226.546, 1507.56, 226.37, 
 points = PackedVector2Array(1632.16, 227.02, 1633.94, 226.544, 1635.56, 226.367, 1637.02, 226.456, 1638.29, 226.78, 1639.36, 227.306, 1640.19, 228.004, 1640.77, 228.84, 1641.09, 229.782, 1641.12, 230.8, 1640.83, 231.86, 1639.81, 233.332, 1638.36, 234.237, 1636.65, 234.623, 1634.85, 234.541, 1633.15, 234.041, 1631.71, 233.173, 1630.72, 231.987, 1630.35, 230.533, 1630.77, 228.861, 1632.16, 227.02)
 
 [connection signal="exit_level_select" from="ExitButton" to="." method="_on_exit_level_select"]
-[connection signal="exit_level_select" from="ExitButton/MobileGraceArea" to="." method="_on_exit_level_select"]
 [connection signal="level_clicked" from="Levels/HBoxContainer/ContingencyPlant/LevelSelectBtn" to="." method="_on_level_clicked"]
 [connection signal="level_selected" from="Levels/HBoxContainer/ContingencyPlant/LevelSelectBtn" to="LabelRect" method="_on_level_selected"]
 [connection signal="level_clicked" from="Levels/HBoxContainer/WithTheCurrent/LevelSelectBtn" to="." method="_on_level_clicked"]
 [connection signal="level_selected" from="Levels/HBoxContainer/WithTheCurrent/LevelSelectBtn" to="LabelRect" method="_on_level_selected"]
 [connection signal="level_clicked" from="Levels/HBoxContainer/WarpSpeed/LevelSelectBtn" to="." method="_on_level_clicked"]
 [connection signal="level_selected" from="Levels/HBoxContainer/WarpSpeed/LevelSelectBtn" to="LabelRect" method="_on_level_selected"]
-
-[editable path="ExitButton/MobileGraceArea"]

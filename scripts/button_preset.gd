@@ -8,6 +8,8 @@ class_name ButtonPreset
 var selected: bool = false
 var selectable: bool = true
 
+var mouse_inside: bool = false
+
 func _ready() -> void:
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
@@ -17,11 +19,14 @@ func _ready() -> void:
 
 func _on_mouse_entered() -> void:
 	if is_visible_in_tree() and selectable:
+		mouse_inside = true
 		Vibration.gui_tap()
 		grab_focus()
 	
 func _on_mouse_exited() -> void:
+		mouse_inside = false
 		release_focus()
+		unselect()
 
 func _on_focus_entered() -> void:
 	if selectable:

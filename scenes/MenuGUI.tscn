@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://c0685vkvjd2ek"]
+[gd_scene load_steps=37 format=3 uid="uid://c0685vkvjd2ek"]
 
 [ext_resource type="Script" uid="uid://dp17sk5btwmnf" path="res://scripts/menu_gui.gd" id="1_30dmf"]
 [ext_resource type="PackedScene" uid="uid://bcdqwk2oqbq4w" path="res://scenes/mousescene.tscn" id="1_rwv2g"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ro5ic3wb0ah4" path="res://scenes/LevelSelectGUI.tscn" id="6_4imi1"]
 [ext_resource type="Script" uid="uid://dck7r87k33huf" path="res://scripts/fade_out.gd" id="8_ds5pe"]
 [ext_resource type="PackedScene" uid="uid://c1yrgscpcae7g" path="res://scenes/button_sound_player.tscn" id="8_fqox8"]
+[ext_resource type="PackedScene" uid="uid://idb1j54md8ec" path="res://scenes/button_grace_area_mobile.tscn" id="9_letrg"]
 [ext_resource type="Theme" uid="uid://b5x8fwp1vrarc" path="res://resources/themes/no_bg_button_theme.tres" id="9_rbo5s"]
 [ext_resource type="FontFile" uid="uid://7u54b7ave0i7" path="res://assets/Fonts/ethnocen.ttf" id="10_0uspm"]
 [ext_resource type="Script" uid="uid://c32cs7876gib4" path="res://scripts/vibrate_toggle_button.gd" id="10_fqox8"]
@@ -835,6 +836,11 @@ theme = ExtResource("9_rbo5s")
 script = ExtResource("10_fqox8")
 toggled_symbol = NodePath("Squiggle")
 metadata/_edit_use_anchors_ = true
+
+[node name="MobileGraceArea" parent="MenuButtons/VibrateToggleButton" instance=ExtResource("9_letrg")]
+layout_mode = 0
+offset_left = 63.989746
+offset_right = 225.96387
 
 [node name="Squiggle" type="Line2D" parent="MenuButtons/VibrateToggleButton"]
 scale = Vector2(0.9999999, 0.9999999)
