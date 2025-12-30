@@ -1,5 +1,6 @@
 extends Node2D
 @export var beatMap:Beatmap
+@export var restartHoldRequirement: float = 1.5
 
 @export var bar1:Node2D
 @export var bar2:Node2D
@@ -45,6 +46,8 @@ var songStartTime:float = 0
 var songLength:float = 0
 var currentSongProgress:float = 0
 
+# Restart holding duration
+@onready var restartHeldTime: float = 0
 
 #TODO
 # would be nice if we could add hexagon rotation as a next level gimmick
@@ -60,6 +63,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if Input.is_action_pressed("Restart"):
+		restartHeldTime += delta
+		if restartHeldTime >= restartHoldRequirement:
+			health = 0
+	else:
+		restartHeldTime = 0
 	
 	if Time.get_unix_time_from_system() - 3 >= globalStartTime and not hasStarted:
 		music.play()
