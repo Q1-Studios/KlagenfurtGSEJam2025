@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://df1qtj8qc210w"]
+[gd_scene load_steps=9 format=3 uid="uid://tl36e353nly5"]
 
 [ext_resource type="Shader" uid="uid://csxon2ptntecx" path="res://shaders/crtscreen.gdshader" id="1_362ok"]
 [ext_resource type="Shader" uid="uid://brf2fxm2ewmux" path="res://shaders/accumulator.gdshader" id="2_wxyue"]
@@ -7,9 +7,12 @@
 [sub_resource type="GDScript" id="GDScript_uphyt"]
 resource_name = "fwd"
 script/source = "extends Node2D
+
+@export var sub_viewport: SubViewport
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion or event is InputEventMouseButton:
-		$SubViewport.push_input(event,false)
+		sub_viewport.push_input(event,false)
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 "
 
@@ -54,8 +57,9 @@ shader = ExtResource("2_wxyue")
 shader_parameter/decay = 0.010000000475
 shader_parameter/hard_cut = 0.0250000011875
 
-[node name="root" type="Node2D"]
+[node name="root" type="Node2D" node_paths=PackedStringArray("sub_viewport")]
 script = SubResource("GDScript_uphyt")
+sub_viewport = NodePath("SubViewport")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_5gdhr")
@@ -84,7 +88,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(1, 0, 0, 1)
 
-[node name="Node2D" parent="SubViewport" instance=ExtResource("3_xllif")]
+[node name="ScoreGUI" parent="SubViewport" instance=ExtResource("3_xllif")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(271, 88)

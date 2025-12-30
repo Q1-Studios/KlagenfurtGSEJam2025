@@ -155,7 +155,7 @@ func press() -> void:
 	get_tree().change_scene_to_packed(SceneManager.menuScene)
 "
 
-[node name="Node2D" type="Node2D"]
+[node name="ScoreGUI" type="Node2D"]
 
 [node name="CursorWave" parent="." instance=ExtResource("2_8bkue")]
 position = Vector2(918.2888, 502.03766)

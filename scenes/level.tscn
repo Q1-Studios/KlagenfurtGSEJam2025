@@ -6,10 +6,10 @@
 [ext_resource type="Shader" uid="uid://brf2fxm2ewmux" path="res://shaders/accumulator.gdshader" id="2_t1rx8"]
 [ext_resource type="PackedScene" uid="uid://dlfmexxr77roi" path="res://scenes/manager.tscn" id="3_w8frs"]
 [ext_resource type="Script" uid="uid://75u7easj0h8u" path="res://scripts/standing_wave.gd" id="4_8iemx"]
-[ext_resource type="Script" uid="uid://b0idrg4xodocc" path="res://scripts/score_label.gd" id="4_mx8sn"]
+[ext_resource type="Script" path="res://scripts/score_label.gd" id="4_mx8sn"]
 [ext_resource type="PackedScene" uid="uid://cypocefdgcpb6" path="res://scenes/fancyhex.tscn" id="4_olg7q"]
 [ext_resource type="Script" uid="uid://cxj5w7n7ps51f" path="res://scripts/music_progress_bar.gd" id="4_ppgk2"]
-[ext_resource type="Script" uid="uid://dt8goso8xl5cc" path="res://scripts/glitch_effect.gd" id="5_klq6b"]
+[ext_resource type="Script" path="res://scripts/glitch_effect.gd" id="5_klq6b"]
 [ext_resource type="Resource" uid="uid://dertbgu17vopc" path="res://assets/beatmaps/Contingency Plant.tres" id="5_olg7q"]
 [ext_resource type="Script" uid="uid://dcqb6c2nodald" path="res://scenes/fixpitchonlaunch.gd" id="6_wc255"]
 [ext_resource type="AudioStream" uid="uid://dddb2yff3p4nx" path="res://assets/music/ContingencyPlant.ogg" id="7_8iemx"]
@@ -22,6 +22,7 @@ script/source = "extends Node2D
 
 
 @export var scene_name: String
+@export var sub_viewport: SubViewport
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -33,7 +34,7 @@ func _ready() -> void:
 	
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey or event is InputEventScreenTouch:
-		$SubViewport.push_input(event,false)
+		sub_viewport.push_input(event,false)
 		
 func deathTransition():
 	print(\"check if transition is being called\")
@@ -324,9 +325,10 @@ corner_detail = 1
 bg_color = Color(1, 1, 1, 0.34901962)
 corner_detail = 1
 
-[node name="root" type="Node2D"]
+[node name="root" type="Node2D" node_paths=PackedStringArray("sub_viewport")]
 script = SubResource("GDScript_w8frs")
 scene_name = "Level1"
+sub_viewport = NodePath("SubViewport")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_5gdhr")

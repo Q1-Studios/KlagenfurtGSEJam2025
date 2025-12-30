@@ -9,16 +9,12 @@
 [sub_resource type="GDScript" id="GDScript_uphyt"]
 resource_name = "fwd"
 script/source = "extends Node2D
-func _input(event: InputEvent) -> void:
-		$SubViewport.push_input(event)
-		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
-var anykeyhidden = false
-func _process(_delta):
-	if not anykeyhidden and Input.is_anything_pressed():
-		$SubViewport/MenuGUI/PRESSANYKEY.hide()
-		$SubViewport/MenuGUI/MenuButtons/AnimationPlayer.play(\"swoopin\")
-		anykeyhidden = true
+@export var sub_viewport: SubViewport
+
+func _input(event: InputEvent) -> void:
+		sub_viewport.push_input(event)
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 "
 
 [sub_resource type="Environment" id="Environment_5gdhr"]
@@ -62,8 +58,9 @@ shader = ExtResource("2_3vvtq")
 shader_parameter/decay = 0.010000000475
 shader_parameter/hard_cut = 0.0250000011875
 
-[node name="root" type="Node2D"]
+[node name="root" type="Node2D" node_paths=PackedStringArray("sub_viewport")]
 script = SubResource("GDScript_uphyt")
+sub_viewport = NodePath("SubViewport")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_5gdhr")

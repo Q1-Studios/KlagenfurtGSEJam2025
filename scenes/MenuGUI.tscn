@@ -657,8 +657,11 @@ func copyallto(child):
 	child.antialiased = antialiased
 "
 
-[node name="MenuContent" type="Node2D"]
+[node name="MenuContent" type="Node2D" node_paths=PackedStringArray("fade_out", "init_text", "init_animation_player")]
 script = ExtResource("1_30dmf")
+fade_out = NodePath("FadeOut")
+init_text = NodePath("PressAnyKeyText")
+init_animation_player = NodePath("MenuButtons/ButtonTriggeredAnimations")
 
 [node name="owlspawner" type="Node2D" parent="."]
 visible = false
@@ -714,7 +717,6 @@ libraries = {
 offset_top = -200.0
 offset_bottom = 45.0
 scale = Vector2(1.297, 1.297)
-disabled = true
 script = SubResource("GDScript_wf3n4")
 anim_player = NodePath("../ButtonTriggeredAnimations")
 
@@ -745,7 +747,7 @@ default_shown = NodePath("../../TutorialText")
 position = Vector2(540, 717.235)
 scale = Vector2(0.42, 0.42)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PressAnyKeyText"]
+[node name="PressAnyKeyAnimationPlayer" type="AnimationPlayer" parent="PressAnyKeyText"]
 root_node = NodePath("../../../..")
 libraries = {
 &"": SubResource("AnimationLibrary_wf3n4")

@@ -1,4 +1,5 @@
 extends ColorRect
+class_name FadeOutRect
 
 @export var duration: float = 1
 

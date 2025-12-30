@@ -15,11 +15,13 @@ func _ready() -> void:
 	pressed.connect(_on_pressed)
 	
 	if default_select:
+		grab_focus()
 		select()
 
 func _on_mouse_entered() -> void:
 	if is_visible_in_tree() and selectable:
 		modulate = selected_modulate
+		grab_focus()
 		select()
 	
 func _on_mouse_exited() -> void:
