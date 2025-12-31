@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://b827ad2p7ghva" path="res://scripts/rich_text_label.gd" id="5_7xfkq"]
 [ext_resource type="Script" uid="uid://bfmhd3f3f21a" path="res://scripts/outcome_text.gd" id="6_nq3vv"]
 [ext_resource type="Script" uid="uid://p04n1cdsny6g" path="res://scripts/reprise_music.gd" id="8_1bmex"]
-[ext_resource type="AudioStream" uid="uid://baybfgj38cd2g" path="res://assets/music/ContingencyPlantReprise.ogg" id="9_otn0o"]
+[ext_resource type="AudioStream" uid="uid://baybfgj38cd2g" path="res://assets/music/ContingencyPlant_Reprise.ogg" id="9_otn0o"]
 [ext_resource type="AudioStream" uid="uid://d2h8wv02d4dgc" path="res://assets/music/WithTheCurrent_Reprise.ogg" id="10_otn0o"]
 [ext_resource type="AudioStream" uid="uid://cpq5o1nnwfx41" path="res://assets/music/WarpSpeed_OhmBeatEdit_Reprise.ogg" id="11_mu0s0"]
 [ext_resource type="Script" uid="uid://c6moxo5qoybc0" path="res://scripts/platform_text.gd" id="12_m4d8m"]
