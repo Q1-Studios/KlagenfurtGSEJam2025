@@ -1,5 +1,5 @@
 extends ProgressBar
-@export var manager:Node2D
+@export var manager:HitBarManager
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

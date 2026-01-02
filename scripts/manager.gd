@@ -1,4 +1,6 @@
 extends Node2D
+class_name HitBarManager
+
 @export var beatMap:Beatmap
 @export var restartHoldRequirement: float = 1.5
 
@@ -16,8 +18,8 @@ signal okSignal
 signal missSignal
 
 #Points
-var PERFECTPOINTS:int = 300
-var OKPOINTS:int = 200
+const PERFECTPOINTS:int = 300
+const OKPOINTS:int = 200
 var points:int = 0
 
 #End screen counters
@@ -26,39 +28,26 @@ var okAmount:int = 0
 var missAmount:int = 0
 
 #Health
-var DAMAGE:int = 10
-var RECOVER:int = 5
+const DAMAGE:int = 10
+const RECOVER:int = 5
 var health:int = 100
 
 #Music/God function
-var beatMapLength: int = 0
+@onready var beatMapLength: int = beatMap.data.size()
+@onready var musicLatency:float = AudioServer.get_output_latency()
+@onready var globalStartTime:float = Time.get_unix_time_from_system()
 var enemyTracker:int = 0
-var currentEnemyKey:String
-var currentEnemyTime:int
-var musicLatency:int
-var currentMusicTime:int
-var globalStartTime:int
 var hasStarted:bool = false
 
 #Progressbar
-var currentTimeMs:float = 0
-var songStartTime:float = 0
-var songLength:float = 0
+@onready var songLength: float = music.stream.get_length()
 var currentSongProgress:float = 0
 
 # Restart holding duration
-@onready var restartHeldTime: float = 0
+var restartHeldTime: float = 0
 
 #TODO
 # would be nice if we could add hexagon rotation as a next level gimmick
-
-
-func _ready() -> void:
-	globalStartTime = Time.get_unix_time_from_system()
-	songLength = int(music.stream.get_length() * 1000)
-	musicLatency = AudioServer.get_output_latency()
-	
-	beatMapLength = beatMap.data.size()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -70,23 +59,20 @@ func _process(delta: float) -> void:
 	else:
 		restartHeldTime = 0
 	
-	if Time.get_unix_time_from_system() - 3 >= globalStartTime and not hasStarted:
+	if not hasStarted and Time.get_unix_time_from_system() >= globalStartTime + 3:
 		music.play()
-		songStartTime = Time.get_unix_time_from_system()
 		hasStarted = true
 	
-	if currentSongProgress <= 1 and songStartTime != 0:
-		currentTimeMs = Time.get_unix_time_from_system() - songStartTime
-		currentTimeMs = currentTimeMs * 1000
+	if currentSongProgress <= 1 and hasStarted:
 		#print("currentTime in seconds", currentTimeMs)
 		#print("songLength")
-		currentSongProgress = currentTimeMs / songLength
+		currentSongProgress = music.get_playback_position() / songLength
 		#print("progress", currentSongProgress)
 	
 	if enemyTracker < beatMapLength:
-			currentEnemyKey = beatMap.data[enemyTracker].key
-			currentEnemyTime = beatMap.data[enemyTracker].milliseconds 
-			currentMusicTime = int(1000 * (music.get_playback_position() + AudioServer.get_time_to_next_mix() + musicLatency))
+			var currentEnemyKey = beatMap.data[enemyTracker].key
+			var currentEnemyTime = beatMap.data[enemyTracker].milliseconds 
+			var currentMusicTime = int(1000 * (music.get_playback_position() + AudioServer.get_time_to_next_mix() + musicLatency))
 			
 			var spawnTime: int = currentEnemyTime - 2000 # Enemy spawns 2000ms before it hits the bar
 			if (currentMusicTime >= spawnTime):
