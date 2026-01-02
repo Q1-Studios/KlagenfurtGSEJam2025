@@ -19,8 +19,9 @@ func _process(delta: float) -> void:
 			get_tree().change_scene_to_packed(transition_target)
 
 func _on_level_select_shown() -> void:
-	init_focus.grab_focus()
-	allow_exit = true
+	if not visible:
+		init_focus.grab_focus()
+		allow_exit = true
 
 func _on_level_clicked(level: SceneManager.LevelIds) -> void:
 	transition_target = SceneManager.get_level_from_id(level)

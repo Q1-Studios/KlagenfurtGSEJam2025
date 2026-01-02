@@ -24,14 +24,13 @@ func _on_mouse_entered() -> void:
 		grab_focus()
 	
 func _on_mouse_exited() -> void:
-		mouse_inside = false
-		release_focus()
-		unselect()
+	mouse_inside = false
+	release_focus()
 
 func _on_focus_entered() -> void:
 	if selectable:
 		modulate = selected_modulate
-	select()
+		select()
 
 func _on_focus_exited() -> void:
 	modulate = default_modulate
@@ -41,11 +40,8 @@ func _on_pressed() -> void:
 	press()
 
 func set_selectable(value: bool) -> void:
-	if value:
-		selectable = true
-	else:
-		selectable = false
-		_on_mouse_exited()
+	selectable = value
+	_on_mouse_exited()
 
 # Inheriting classes should implement these
 func press() -> void:

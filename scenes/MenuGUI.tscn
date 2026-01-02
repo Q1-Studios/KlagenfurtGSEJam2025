@@ -95,6 +95,34 @@ tracks/3/keys = {
 "method": &"grab_focus"
 }]
 }
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CreditsButton")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [true],
+"method": &"set_selectable"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("QuitButton")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [true],
+"method": &"set_selectable"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_uui5l"]
 resource_name = "CreditsClicked"
@@ -233,6 +261,48 @@ tracks/10/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("CreditsButton")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"set_selectable"
+}]
+}
+tracks/12/type = "method"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("QuitButton")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"set_selectable"
+}]
+}
+tracks/13/type = "method"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("../LevelSelectLayer")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0.76666665),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_level_select_shown"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_gjjcl"]
@@ -460,10 +530,11 @@ script/source = "extends ButtonPreset
 @export var default_shown: CanvasItem
 
 func select() -> void:
-		show_on_hover.show()
-		default_shown.hide()
+	show_on_hover.show()
+	default_shown.hide()
 	
 func unselect() -> void:
+	if selectable:
 		show_on_hover.hide()
 		default_shown.show()
 
@@ -480,10 +551,11 @@ script/source = "extends ButtonPreset
 @export var default_shown: CanvasItem
 
 func select() -> void:
-		show_on_hover.show()
-		default_shown.hide()
+	show_on_hover.show()
+	default_shown.hide()
 
 func unselect() -> void:
+	if selectable:
 		show_on_hover.hide()
 		default_shown.show()
 
@@ -1630,7 +1702,6 @@ antialiased = true
 script = SubResource("GDScript_ds5pe")
 lines = [NodePath("../../OnBeatLogo/Selection_part13"), NodePath("../../OnBeatLogo/Selection_part14"), NodePath("../../OnBeatLogo/Selection_part15"), NodePath("../../OnBeatLogo/Selection_part16"), NodePath("../../OnBeatLogo/Selection_part17"), NodePath("../../OnBeatLogo/Selection_part18"), NodePath("../../OnBeatLogo/Selection_part19"), NodePath("../../PressAnyKeyText/Paths/Selection_part1"), NodePath("../../PressAnyKeyText/Paths/Selection_part2"), NodePath("../../PressAnyKeyText/Paths/Selection_part3"), NodePath("../../PressAnyKeyText/Paths/Selection_part4"), NodePath("../../PressAnyKeyText/Paths/Selection_part5"), NodePath("../../PressAnyKeyText/Paths/Selection_part6"), NodePath("../../PressAnyKeyText/Paths/Selection_part7"), NodePath("../../PressAnyKeyText/Paths/Selection_part8"), NodePath("../../PressAnyKeyText/Paths/Selection_part9"), NodePath("../../PressAnyKeyText/Paths/Selection_part10"), NodePath("../../PressAnyKeyText/Paths/Selection_part11"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part1"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part2"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part3"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part4"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part5"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part6"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part7"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part8"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part9"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part10"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part11"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part12")]
 
-[connection signal="pressed" from="MenuButtons/PlayButton" to="LevelSelectLayer" method="_on_level_select_shown"]
 [connection signal="exit_level_select" from="LevelSelectLayer" to="." method="_on_exit_level_select"]
 [connection signal="transition_to_level" from="LevelSelectLayer" to="." method="_on_transition_to_level"]
 [connection signal="transition_to_level" from="LevelSelectLayer" to="FadeOut" method="_on_transition_to_level"]
