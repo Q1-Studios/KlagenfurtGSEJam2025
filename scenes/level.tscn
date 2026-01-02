@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://c58wjax2eyvgm"]
+[gd_scene load_steps=35 format=3 uid="uid://c58wjax2eyvgm"]
 
 [ext_resource type="Script" uid="uid://cmf57kjjp031t" path="res://scripts/fade_in.gd" id="1_8iemx"]
 [ext_resource type="Shader" uid="uid://csxon2ptntecx" path="res://shaders/crtscreen.gdshader" id="1_olg7q"]
@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://og72yxktkit7" path="res://assets/sfx/glitch/glitch_out.ogg" id="8_8iemx"]
 [ext_resource type="Script" uid="uid://dyo8auhpbh0wj" path="res://scripts/touch_restart_button.gd" id="12_arp2o"]
 [ext_resource type="Script" uid="uid://cs66hbmybsb40" path="res://scripts/camera_bop.gd" id="13_ux5qa"]
+[ext_resource type="Script" uid="uid://bmcgfwf065sho" path="res://scripts/pause_screen.gd" id="18_82cfe"]
 
 [sub_resource type="GDScript" id="GDScript_w8frs"]
 resource_name = "forward_keyboard_inputs"
@@ -303,6 +304,11 @@ corner_detail = 1
 bg_color = Color(1, 1, 1, 0.34901962)
 corner_detail = 1
 
+[sub_resource type="Theme" id="Theme_ux5qa"]
+Label/colors/font_color = Color(0.17103916, 0.17103916, 0.17103916, 1)
+Label/font_sizes/font_size = 80
+Label/fonts/font = ExtResource("8_8c41q")
+
 [node name="root" type="Node2D" node_paths=PackedStringArray("sub_viewport")]
 script = SubResource("GDScript_w8frs")
 sub_viewport = NodePath("SubViewport")
@@ -560,6 +566,33 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(1, 1, 1, 0)
 script = ExtResource("1_8iemx")
+
+[node name="PauseScreen" type="ColorRect" parent="."]
+process_mode = 3
+visible = false
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme = SubResource("Theme_ux5qa")
+color = Color(1, 1, 1, 0.7254902)
+script = ExtResource("18_82cfe")
+
+[node name="GamePausedText" type="Label" parent="PauseScreen"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+text = "Game paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="PauseScreen"]
+layout_mode = 0
+offset_top = 600.0
+offset_right = 1920.0
+offset_bottom = 683.0
+theme_override_colors/font_color = Color(0.4217312, 0.4217313, 0.4217311, 1)
+theme_override_font_sizes/font_size = 36
+text = "Press anything to continue"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="RestartButton" to="RestartButton" method="_on_pressed"]
 [connection signal="released" from="RestartButton" to="RestartButton" method="_on_released"]
