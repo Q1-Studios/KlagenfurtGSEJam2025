@@ -106,7 +106,7 @@ stream_3/stream = ExtResource("7_rrntp")
 stream_4/stream = ExtResource("8_5qaxt")
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_l1w72"]
-points = PackedVector2Array(0, 50, 31, 0, 60, -120, -60, -120, -31, 0)
+points = PackedVector2Array(0, 50, 31, 0, 70, -120, -70, -120, -31, 0)
 
 [node name="Bar" type="Node2D" node_paths=PackedStringArray("okInnerBar", "okOuterBar", "perfectBar")]
 scale = Vector2(10, 10)
