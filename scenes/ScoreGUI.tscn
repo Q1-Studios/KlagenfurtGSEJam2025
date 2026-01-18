@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bhx5efbk25at7"]
+[gd_scene load_steps=27 format=3 uid="uid://bhx5efbk25at7"]
 
 [ext_resource type="PackedScene" uid="uid://dr4mxxdydivm4" path="res://scenes/restartbutton.tscn" id="1_7xfkq"]
 [ext_resource type="Script" uid="uid://ceov5hw4m2am7" path="res://scripts/score_gui.gd" id="1_8bkue"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://d2h8wv02d4dgc" path="res://assets/music/WithTheCurrent_Reprise.ogg" id="10_otn0o"]
 [ext_resource type="AudioStream" uid="uid://cpq5o1nnwfx41" path="res://assets/music/WarpSpeed_OhmBeatEdit_Reprise.ogg" id="11_mu0s0"]
 [ext_resource type="Script" uid="uid://c6moxo5qoybc0" path="res://scripts/platform_text.gd" id="12_m4d8m"]
+[ext_resource type="AudioStream" uid="uid://e6copueg0ush" path="res://assets/music/ShiftyShowdown_OhmBeatEdit_Reprise.ogg" id="15_luylr"]
 
 [sub_resource type="Animation" id="Animation_dfy5j"]
 length = 0.001
@@ -167,6 +168,11 @@ stream = ExtResource("11_mu0s0")
 volume_db = -2.0
 metadata/_custom_type_script = "uid://cmh78knw1uq2k"
 
+[sub_resource type="Resource" id="Resource_6i2qx"]
+script = ExtResource("10_mu0s0")
+stream = ExtResource("15_luylr")
+metadata/_custom_type_script = "uid://cmh78knw1uq2k"
+
 [node name="ScoreGUI" type="Node2D" node_paths=PackedStringArray("init_focus")]
 script = ExtResource("1_8bkue")
 init_focus = NodePath("MenuButtons/RestartButton")
@@ -254,5 +260,6 @@ script = ExtResource("8_1bmex")
 reprises = Dictionary[Variant, ExtResource("10_mu0s0")]({
 0: SubResource("Resource_74mtw"),
 1: SubResource("Resource_luylr"),
-2: SubResource("Resource_3ip4w")
+2: SubResource("Resource_3ip4w"),
+3: SubResource("Resource_6i2qx")
 })
