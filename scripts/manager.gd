@@ -130,41 +130,44 @@ func _on_bar_no_hit() -> void:
 	missed()
 
 func missed():
-	health -= DAMAGE
-	health = clamp(health, 0, 100)
-	print("Missed! Current Health: ", health)
-	missAmount += 1
-	ManagerGlobal.missAmount = missAmount
-	missSignal.emit()
-	$"Miss_Great_Perfect/MISS".show()
-	$"Miss_Great_Perfect/PERFECT".hide()
-	$"Miss_Great_Perfect/GREAT".hide()
-	$Miss_Great_Perfect/MISS/AnimationPlayer.play("swobble")
+	if health > 0:
+		health -= DAMAGE
+		health = clamp(health, 0, 100)
+		print("Missed! Current Health: ", health)
+		missAmount += 1
+		ManagerGlobal.missAmount = missAmount
+		missSignal.emit()
+		$"Miss_Great_Perfect/MISS".show()
+		$"Miss_Great_Perfect/PERFECT".hide()
+		$"Miss_Great_Perfect/GREAT".hide()
+		$Miss_Great_Perfect/MISS/AnimationPlayer.play("swobble")
 
 func okHit():
-	points += OKPOINTS
-	ManagerGlobal.points = points
-	okAmount += 1
-	ManagerGlobal.okAmount = okAmount
-	okSignal.emit()
-	$"Miss_Great_Perfect/MISS".hide()
-	$"Miss_Great_Perfect/PERFECT".hide()
-	$"Miss_Great_Perfect/GREAT".show()
-	$Miss_Great_Perfect/GREAT/AnimationPlayer.play("swobble")
+	if health > 0:
+		points += OKPOINTS
+		ManagerGlobal.points = points
+		okAmount += 1
+		ManagerGlobal.okAmount = okAmount
+		okSignal.emit()
+		$"Miss_Great_Perfect/MISS".hide()
+		$"Miss_Great_Perfect/PERFECT".hide()
+		$"Miss_Great_Perfect/GREAT".show()
+		$Miss_Great_Perfect/GREAT/AnimationPlayer.play("swobble")
 
 func perfectHit():
-	health += RECOVER
-	health = clamp(health, 0, 100)
-	print("Perfect! Current Health: ", health)
-	points += PERFECTPOINTS
-	ManagerGlobal.points = points
-	perfectAmount += 1
-	ManagerGlobal.perfectAmount = perfectAmount
-	perfectSignal.emit()
-	$"Miss_Great_Perfect/MISS".hide()
-	$"Miss_Great_Perfect/PERFECT".show()
-	$"Miss_Great_Perfect/GREAT".hide()
-	$Miss_Great_Perfect/PERFECT/AnimationPlayer.play("swobble")
+	if health > 0:
+		health += RECOVER
+		health = clamp(health, 0, 100)
+		print("Perfect! Current Health: ", health)
+		points += PERFECTPOINTS
+		ManagerGlobal.points = points
+		perfectAmount += 1
+		ManagerGlobal.perfectAmount = perfectAmount
+		perfectSignal.emit()
+		$"Miss_Great_Perfect/MISS".hide()
+		$"Miss_Great_Perfect/PERFECT".show()
+		$"Miss_Great_Perfect/GREAT".hide()
+		$Miss_Great_Perfect/PERFECT/AnimationPlayer.play("swobble")
 
 func get_playback_position() -> float:
 	return music.get_playback_position() + AudioServer.get_time_to_next_mix() + musicLatency
